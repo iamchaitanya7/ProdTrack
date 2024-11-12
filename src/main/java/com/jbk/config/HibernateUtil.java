@@ -7,18 +7,17 @@ import com.jbk.entity.Product;
 public class HibernateUtil {
     private static SessionFactory sessionFactory;
 
-    static {
+    public static SessionFactory getSessionFactory () {
         try {
-            Configuration configuration = new Configuration();
-            configuration.configure("hibernate.cfg.xml");
-            configuration.addAnnotatedClass(Product.class);
-            sessionFactory = configuration.buildSessionFactory();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+            Configuration configuration = new Configuration ( );
+            configuration.configure ("hibernate.cfg.xml");
+            configuration.addAnnotatedClass (Product.class);
+            sessionFactory = configuration.buildSessionFactory ( );
 
-    public static SessionFactory getSessionFactory() {
+        } catch (Exception e) {
+            e.printStackTrace ( );
+        }
         return sessionFactory;
     }
 }
+
