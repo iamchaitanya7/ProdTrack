@@ -5,19 +5,10 @@ import org.hibernate.cfg.Configuration;
 import com.jbk.entity.Product;
 
 public class HibernateUtil {
-    private static SessionFactory sessionFactory;
-
     public static SessionFactory getSessionFactory () {
-        try {
-            Configuration configuration = new Configuration ( );
-            configuration.configure ("hibernate.cfg.xml");
-            configuration.addAnnotatedClass (Product.class);
-            sessionFactory = configuration.buildSessionFactory ( );
-
-        } catch (Exception e) {
-            e.printStackTrace ( );
-        }
+        Configuration cfg = new Configuration ( );
+        cfg.configure ( ).addAnnotatedClass (Product.class);
+        SessionFactory sessionFactory = cfg.buildSessionFactory ( );
         return sessionFactory;
     }
 }
-
